@@ -1,0 +1,20 @@
+CREATE DATABASE catacha
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Russian_Russia.1251'
+    LC_CTYPE = 'Russian_Russia.1251'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
+
+
+CREATE USER catacha_user WITH PASSWORD 'd8hXR2wPoMCGWtqZ';
+ALTER ROLE catacha_user SET client_encoding TO 'utf8';
+ALTER ROLE catacha_user SET default_transaction_isolation TO 'read committed';
+ALTER ROLE catacha_user SET timezone TO 'UTC';
+
+CREATE SCHEMA public;
+GRANT ALL ON SCHEMA public TO catacha_user;
+GRANT ALL PRIVILEGES ON DATABASE catacha TO catacha_user;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO catacha_user;
